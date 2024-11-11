@@ -103,31 +103,40 @@ public class Main {
                 break;
         }
         //task 3 lesson 2
-        short changeYear = 1552;
-        short startLeapYear = 1548;
-        if (changeYear >= startLeapYear) {
-            if (changeYear % 4 == 0) {
-                System.out.println("Год " + changeYear + " является високосным");
-            } else if (changeYear % 400 == 0) {
-                System.out.println("Год " + changeYear + " является високосным");
-            } else {
-                System.out.println("Год " + changeYear + " не является високосным");
+        short year = 1552;
+        try {
+            if (year < 1548) {
+                throw new IllegalArgumentException("Год не является високосным");
             }
-        } else {
-            System.out.println("Год " + changeYear + " не является високосным");
+            if (year % 4 == 0 || year % 400 == 0) {
+                System.out.println("Год " + year + " является високосным");
+            } else {
+                System.out.println("Год " + year + " не является високосным");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Год " + year + " не является високосным");
         }
         //task 4 lesson 2
         short radiusMax = 100;
         short deliveryDistance = 95;
+        try {
+            if (deliveryDistance < radiusMax && deliveryDistance > 0) {
+                System.out.print("Потребуется дней: ");
 
-        if (deliveryDistance < radiusMax && deliveryDistance > 0) {
-            System.out.print("Потребуется дней: ");
+            }
             if (deliveryDistance < 20) {
                 System.out.print("одни сутки");
+
             } else if (deliveryDistance < 60) {
                 System.out.print("двое суток");
-            } else if (deliveryDistance < 100) {
+
+            } else if (deliveryDistance < radiusMax) {
                 System.out.print("трое суток");
+
+            }
+        } catch (IllegalArgumentException e) {
+            if (deliveryDistance > radiusMax) {
+                System.out.println("Свыше 100 км доставки нет");
             }
         }
         //task 5 lesson 2
@@ -136,30 +145,23 @@ public class Main {
         /*Прописываем условие в котором программа не будет выполняться*/
         if (monthNumber < 1 || monthNumber > 12) {
             System.out.println("Номер месяца должен быть от 1 до 12");
-        }
+        } else {
 
-        Month month = Month.of(monthNumber);
-        switch (month) {
-            case DECEMBER:
-            case JANUARY:
-            case FEBRUARY:
-                System.out.println("Зима");
-                break;
-            case MARCH:
-            case APRIL:
-            case MAY:
-                System.out.println("Весна");
-                break;
-            case JUNE:
-            case JULY:
-            case AUGUST:
-                System.out.println("Лето");
-                break;
-            case SEPTEMBER:
-            case OCTOBER:
-            case NOVEMBER:
-                System.out.println("Осень");
-                break;
+            Month month = Month.of(monthNumber);
+            switch (month) {
+                case DECEMBER, JANUARY, FEBRUARY:
+                    System.out.println("Зима");
+                    break;
+                case MARCH, APRIL, MAY:
+                    System.out.println("Весна");
+                    break;
+                case JUNE, JULY, AUGUST:
+                    System.out.println("Лето");
+                    break;
+                case SEPTEMBER, OCTOBER, NOVEMBER:
+                    System.out.println("Осень");
+                    break;
+            }
         }
     }
 }
