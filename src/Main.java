@@ -71,7 +71,7 @@ public class Main {
         if (three > largest) {
             largest = three;
         }
-        System.out.print("Largest number: " + largest);
+        System.out.println("Largest number: " + largest);
         // А можно было бы использовать пузырьковую сортировку...
         //task 1 lesson 2
         byte clientOS;
@@ -86,11 +86,21 @@ public class Main {
                 System.out.println("Установите версию приложения для Android по ссылке");
                 break;
         }
+        int ocTwoVariant = 0;
+        if (ocTwoVariant == 0) {
+            System.out.println("Установите версию приложения для iOS по ссылке");
+        } else if (ocTwoVariant != 0 && ocTwoVariant == 1) {
+            System.out.println("Установите версию приложения для Android по ссылке");
+        } else {
+            System.out.println("Неверное значение");
+        }
+
+
         //task 2 lesson 2
         short clientDeviceYear = 2015;
         String warning = clientDeviceYear < 2015 ? "облегченную" : "обычную";
         byte clientOSf;
-
+//Гораздо удобнее использовать блоки case, если будут много оперативных систем. мультиплатформенность java*
         String Oc = "Android";
         switch (Oc) {
             case "iOS":
@@ -102,8 +112,9 @@ public class Main {
                 System.out.println("Установите " + warning + " версию приложения для Android по ссылке");
                 break;
         }
+
         //task 3 lesson 2
-        short year = 1552;
+        short year = 2021;
         try {
             if (year < 1548) {
                 throw new IllegalArgumentException("Год не является високосным");
@@ -137,6 +148,8 @@ public class Main {
         } catch (IllegalArgumentException e) {
             if (deliveryDistance > radiusMax) {
                 System.out.println("Свыше 100 км доставки нет");
+            } else {
+                System.out.println("Некорректное значение");
             }
         }
         //task 5 lesson 2
